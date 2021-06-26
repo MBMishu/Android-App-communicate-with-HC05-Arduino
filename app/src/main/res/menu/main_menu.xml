@@ -6,16 +6,16 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_icon"
-            android:title="Home" />
+            android:title="হোম" />
         <item
             android:id="@+id/nav_recharge"
             android:icon="@drawable/recharge"
-            android:title="Recharge" />
+            android:title="রিচার্জ" />
 
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="যোগাযোগ করুন">
         <menu>
 
             <group android:checkableBehavior="single">
@@ -26,11 +26,11 @@
                 <item
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_info_black_24dp"
-                    android:title="Contact Us" />
+                    android:title="যোগাযোগ করুন" />
                 <item
                     android:id="@+id/nav_share"
                     android:icon="@drawable/ic_share_black_24dp"
-                    android:title="Share" />
+                    android:title="শেয়ার করুন" />
             </group>
         </menu>
 

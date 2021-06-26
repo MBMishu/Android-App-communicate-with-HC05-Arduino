@@ -88,7 +88,7 @@
                     android:id="@+id/button"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:background="@color/colorPrimary"
-                    android:text="Click here to pair"
+                    android:text="সংযোগ করতে এখানে ক্লিক করুন"
                     android:layout_marginTop="10dp"
                     android:padding="10dp"
                     />

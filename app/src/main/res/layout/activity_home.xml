@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/green"
-                        android:text="Turn On" />
+                        android:text="চালু করুন" />
                     <Button
                         android:id="@+id/button3"
                         android:layout_marginTop="10dp"
@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/yellow"
-                        android:text="turn OFF" />
+                        android:text="বন্ধ করুন" />
 
                     <Button
                         android:id="@+id/button4"
@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:background="@color/red"
-                        android:text="Disconnect Pairing" />
+                        android:text="সংযোগ বিচ্ছিন্ন করুন" />
 
                 </LinearLayout>
 
