@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         imageView = findViewById(R.id.useLogo);
-        textView = findViewById(R.id.text_logo);
+//        textView = findViewById(R.id.text_logo);
 
         imageView.setAnimation(topAnim);
-        textView.setAnimation(bottomAnim);
+//        textView.setAnimation(bottomAnim);
         Dexter.withContext(this)
 
         .withPermissions(Manifest.permission.BLUETOOTH,

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home"></activity>
+        <activity android:name=".recharge_activity"></activity>
+        <activity android:name=".home" />
         <activity android:name=".index_activity" />
         <activity android:name=".MainActivity">
             <intent-filter>

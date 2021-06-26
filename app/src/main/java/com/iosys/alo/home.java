@@ -1,24 +1,38 @@
 package com.iosys.alo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.io.IOException;
 import java.util.UUID;
 
-public class home extends AppCompatActivity {
+public class home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+
+    //    side_header nav
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     Button btn1, btn2,btn3;
 
 
@@ -69,6 +83,14 @@ public class home extends AppCompatActivity {
 //                Toast.makeText(home.this, address, Toast.LENGTH_SHORT).show();
             }
         });
+
+        //        navigation drawer
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.design_navigation_view);
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     private void sendSignal ( String number ) {
@@ -94,6 +116,55 @@ public class home extends AppCompatActivity {
     }
     private void msg (String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
+    //        navigation drawer
+
+    public void openNav(View view) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+
+                break;
+            case R.id.nav_recharge:
+                startActivity(new Intent(getApplicationContext(), recharge_activity.class));
+                finish();
+                break;
+
+
+            case R.id.nav_contact:
+
+                try {
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/iosysxyz"));
+                    startActivity(myIntent);
+                } catch (Exception e) {
+                    Toast.makeText(this, "No application can handle this request."
+                            + " Please install a webbrowser", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.nav_share:
+
+                try {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+                    String shareMessage = "https://www.facebook.com/iosysxyz"
+                            + BuildConfig.APPLICATION_ID + "\n\n";
+                    intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(intent, "Share Via"));
+                } catch (Exception e) {
+                    Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void> {
@@ -135,5 +206,27 @@ public class home extends AppCompatActivity {
 
             progress.dismiss();
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        if ( btSocket!=null ) {
+            try {
+                btSocket.close();
+            } catch(IOException e) {
+                msg("Error");
+            }
+        }
+        Intent intent = new Intent(getApplicationContext(), index_activity.class);
+        startActivity(intent);
+        finish();
+
+
     }
 }

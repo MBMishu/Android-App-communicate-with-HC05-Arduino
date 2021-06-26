@@ -1,12 +1,19 @@
 package com.iosys.alo;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -16,14 +23,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-public class index_activity extends AppCompatActivity {
+public class index_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Button btnPaired;
     ListView devicelist;
+
+
+//    side_header nav
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
     private BluetoothAdapter myBluetooth = null;
     private Set<BluetoothDevice> pairedDevices;
@@ -38,6 +53,15 @@ public class index_activity extends AppCompatActivity {
 
         btnPaired = (Button) findViewById(R.id.button);
         devicelist = (ListView) findViewById(R.id.listView);
+
+        //        navigation drawer
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.design_navigation_view);
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+
 
         myBluetooth = BluetoothAdapter.getDefaultAdapter();
 
@@ -58,6 +82,58 @@ public class index_activity extends AppCompatActivity {
 
 
     }
+
+    //        navigation drawer
+
+    public void openNav(View view) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                break;
+            case R.id.nav_recharge:
+                startActivity(new Intent(getApplicationContext(), recharge_activity.class));
+                finish();
+                break;
+
+
+            case R.id.nav_contact:
+
+                try {
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/iosysxyz"));
+                    startActivity(myIntent);
+                } catch (Exception e) {
+                    Toast.makeText(this, "No application can handle this request."
+                            + " Please install a webbrowser", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.nav_share:
+
+                try {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+                    String shareMessage = "https://www.facebook.com/iosysxyz"
+                            + BuildConfig.APPLICATION_ID + "\n\n";
+                    intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(intent, "Share Via"));
+                } catch (Exception e) {
+                    Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
+//    bluetooh
 
     private void pairedDevicesList () {
         pairedDevices = myBluetooth.getBondedDevices();
@@ -87,4 +163,37 @@ public class index_activity extends AppCompatActivity {
             startActivity(i);
         }
     };
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+
+@Override
+public void onBackPressed() {
+
+    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+    builder.setMessage("Are you sure you want to close the app?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    index_activity.super.onBackPressed();
+                }
+            })
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+    AlertDialog alertDialog = builder.create();
+    alertDialog.show();
+}
 }

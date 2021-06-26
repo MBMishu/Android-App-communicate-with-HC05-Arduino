@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/colorPrimary"
+    android:background="@color/light_blue"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -16,14 +16,14 @@
         android:id="@+id/useLogo"
         android:transitionName="logo_image"/>
 
-    <TextView
-        android:id="@+id/text_logo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Co-Powered by IoSYS"
-        android:textAlignment="center"
-        android:textColor="@color/background"
-        android:textSize="24sp"
-        android:transitionName="logo_name" />
+<!--    <TextView-->
+<!--        android:id="@+id/text_logo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text=""-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/background"-->
+<!--        android:textSize="24sp"-->
+<!--        android:transitionName="logo_name" />-->
 
 </LinearLayout>
