@@ -118,8 +118,7 @@ public class index_activity extends AppCompatActivity implements NavigationView.
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-                    String shareMessage = "https://github.com/MBMishu/Android-App-communicate-with-HC05-Arduino/blob/main/app-debug.apk"
-                            + BuildConfig.APPLICATION_ID + "\n\n";
+                    String shareMessage = "https://github.com/MBMishu/Android-App-communicate-with-HC05-Arduino/blob/main/app-debug.apk";
                     intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(intent, "Share Via"));
                 } catch (Exception e) {
