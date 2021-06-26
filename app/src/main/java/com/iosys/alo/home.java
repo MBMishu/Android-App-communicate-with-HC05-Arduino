@@ -152,7 +152,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-                    String shareMessage = "https://www.facebook.com/iosysxyz"
+                    String shareMessage = "https://www.facebook.com/iosysxyzhttps://github.com/MBMishu/Android-App-communicate-with-HC05-Arduino/blob/main/app-debug.apk"
                             + BuildConfig.APPLICATION_ID + "\n\n";
                     intent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(intent, "Share Via"));
