@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.iosys.logo"
+        applicationId "com.example.smoke"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -39,19 +39,11 @@ dependencies {
     //permission
     implementation 'com.karumi:dexter:6.2.2'
 
-    //    volley libary
-    implementation 'com.android.volley:volley:1.1.1'
-
-
-//    material design
+    //    material design
 
     implementation 'com.google.android.material:material:1.0.0'
 
     //    sweet  alert
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
-
-    //    lottie animation
-    def lottieVersion = "3.4.0"
-    implementation 'com.airbnb.android:lottie:3.0.0'
 
 }

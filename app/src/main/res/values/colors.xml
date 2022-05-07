@@ -14,7 +14,7 @@
     <color name="gray">#6c757d</color>
     <color name="light_blue">#17a2b8</color>
     <color name="gradiant">#DE71C3</color>
-    <color name="background">#E6EBF1</color>
+    <color name="background">#000000</color>
     <color name="icon_background_orange">#F9E8DE</color>
     <color name="icon_background_purple">#DCE3F7</color>
     <color name="icon_background_green">#D6FCF7</color>

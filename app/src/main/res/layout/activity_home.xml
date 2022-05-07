@@ -7,6 +7,7 @@
     android:layout_height="fill_parent"
     tools:context=".home">
 
+
     <!--navigation side-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/design_navigation_view"
@@ -15,6 +16,7 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/side_header"
         app:menu="@menu/main_menu" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,34 +77,64 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/Swipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="48dp"
+                tools:layout_editor_absoluteY="-37dp">
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center">
 
 
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="480px"
+                        android:layout_height="480px"
+                        android:layout_centerHorizontal="true"
+                        />
+                    <TextView
+                        android:id="@+id/warning_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"/>
+
                     <Button
                         android:id="@+id/button2"
+                        android:layout_below="@+id/warning_text"
                         style="@style/Widget.AppCompat.Button.Colored"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/green"
-                        android:text="চালু করুন" />
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Light on" />
                     <Button
                         android:id="@+id/button3"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/button2"
                         style="@style/Widget.AppCompat.Button.Colored"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
                         android:background="@color/yellow"
-                        android:text="বন্ধ করুন" />
+                        android:text="light Off" />
 
                     <Button
                         android:id="@+id/button4"
@@ -112,17 +144,19 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:background="@color/red"
-                        android:text="সংযোগ বিচ্ছিন্ন করুন" />
+                        android:layout_below="@+id/button3"
+                        android:text="Disconnect" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
 
             </ScrollView>
-
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
         </LinearLayout>
 
     </RelativeLayout>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

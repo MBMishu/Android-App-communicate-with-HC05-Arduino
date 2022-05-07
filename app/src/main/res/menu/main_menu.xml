@@ -6,31 +6,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_icon"
-            android:title="হোম" />
-        <item
-            android:id="@+id/nav_recharge"
-            android:icon="@drawable/recharge"
-            android:title="রিচার্জ" />
+            android:title="Home" />
+
 
 
     </group>
 
-    <item android:title="যোগাযোগ করুন">
+    <item android:title="Conatct Us">
         <menu>
 
             <group android:checkableBehavior="single">
 
-
-
-
                 <item
                     android:id="@+id/nav_contact"
                     android:icon="@drawable/ic_info_black_24dp"
-                    android:title="যোগাযোগ করুন" />
-                <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_share_black_24dp"
-                    android:title="শেয়ার করুন" />
+                    android:title="Contact us" />
+
             </group>
         </menu>
 
